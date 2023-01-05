@@ -12,17 +12,22 @@ kotlin {
     macosX64()
     macosArm64()
     linuxX64()
+    mingwX64()
 
-    val unixMain = sourceSets.create("unixMain") {
-        dependsOn(sourceSets.getByName("commonMain"))
-    }
-    sourceSets.getByName("macosX64Main") {
-        dependsOn(unixMain)
-    }
-    sourceSets.getByName("macosArm64Main") {
-        dependsOn(unixMain)
-    }
-    sourceSets.getByName("linuxX64Main") {
-        dependsOn(unixMain)
+    sourceSets {
+        val commonMain = getByName("commonMain") {
+        }
+        val unixMain = create("unixMain") {
+            dependsOn(commonMain)
+        }
+        getByName("macosX64Main") {
+            dependsOn(unixMain)
+        }
+        getByName("macosArm64Main") {
+            dependsOn(unixMain)
+        }
+        getByName("linuxX64Main") {
+            dependsOn(unixMain)
+        }
     }
 }

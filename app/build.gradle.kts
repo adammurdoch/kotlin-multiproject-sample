@@ -25,6 +25,12 @@ kotlin {
             }
         }
     }
+    mingwX64 {
+        binaries {
+            executable {
+            }
+        }
+    }
 
     sourceSets {
         val commonMain = getByName("commonMain") {
