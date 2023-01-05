@@ -47,4 +47,6 @@ To see this, run:
 ## Issue 3: References to library are not resolved in IDEA
 
 When the build is imported into IDEA, the references to the library in the app are usually not resolved.
-Sometimes they are correctly resolved, but I haven't figured out what triggers this.
+Sometimes the references are correctly resolved, but I haven't figured out what triggers this.
+
+When I manually add a dependency between the source sets in IDEA, then the references are correctly resolved.
