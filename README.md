@@ -46,4 +46,5 @@ To see this, run:
 
 ## Issue 3: References to library are not resolved in IDEA
 
-When the build is imported into IDEA, the references to the library in the app are not resolved.
+When the build is imported into IDEA, the references to the library in the app are usually not resolved.
+Sometimes they are correctly resolved, but I haven't figured out what triggers this.
