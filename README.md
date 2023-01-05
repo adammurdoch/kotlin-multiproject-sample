@@ -30,9 +30,7 @@ To see this, run:
 
 ## Issue 2: App `compileUnixMainKotlinMetadata` fails with unresolved reference to library
 
-The app [uses a class](app/src/unixMain/App.kt) from the library. When the build is imported into IDEA, the reference is resolved correctly
-and I can use content completion, navigate to the class, etc.
-
+The app [uses a class](app/src/unixMain/App.kt) from the library.
 When the same app and library are part of the same Gradle multi-project build, the app can be built correctly.
 However, when the app and library are in separate included builds, building the app fails with an unresolved reference.
 
