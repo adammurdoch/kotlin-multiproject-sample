@@ -9,7 +9,7 @@ The app uses a [simple library](lib/build.gradle.kts), with the same targets and
 
 The app and library are in separate included builds.
 
-## `commonizeNativeDistribution` fails with `java.nio.channels.OverlappingFileLockException`
+## Issue 1: `commonizeNativeDistribution` fails with `java.nio.channels.OverlappingFileLockException`
 
 It seems there is a `commonizeNativeDistribution` task injected into the root project of each build in the tree.
 When there are multiple such builds in the tree, these tasks may run in parallel and seem to conflict with each other.
@@ -28,7 +28,7 @@ To see this, run:
 > ./gradlew app:build --max-workers=1
 ```
 
-## App `compileUnixMainKotlinMetadata` fails with unresolved reference to library
+## Issue 2: App `compileUnixMainKotlinMetadata` fails with unresolved reference to library
 
 The app [uses a class](app/src/unixMain/App.kt) from the library. When the build is imported into IDEA, the reference is resolved correctly
 and I can use content completion, navigate to the class, etc.
@@ -46,6 +46,6 @@ To see this, run:
 > ./gradlew multiproject:app:build
 ```
 
-## References to library are not resolved in IDEA
+## Issue 3: References to library are not resolved in IDEA
 
 When the build is imported into IDEA, the references to the library in the app are not resolved.
