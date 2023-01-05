@@ -20,7 +20,7 @@ To see this, run:
 # Individual binary can be linked successfully
 > ./gradlew app:linkMacosArm64
 
-# Full build of project usually fails with an overlapping lock exceptio, but not always
+# Full build of project usually fails with an overlapping lock exception, but not always
 > ./gradlew app:build
 
 # Force the tasks to run sequentially.
