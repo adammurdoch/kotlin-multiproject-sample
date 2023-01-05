@@ -7,6 +7,8 @@ The [sample app](app/build.gradle.kts) targets macOS, Linux and Windows and adds
 by the macOS and Linux targets.
 The app uses a [simple library](lib/build.gradle.kts), with the same targets and source set configuration.
 
+The app and library are in separate included builds.
+
 ## `commonizeNativeDistribution` fails with `java.nio.channels.OverlappingFileLockException`
 
 It seems there is a `commonizeNativeDistribution` task injected into the root project of each build in the tree.
@@ -15,11 +17,14 @@ When there are multiple such builds in the tree, these tasks may run in parallel
 To see this, run:
 
 ```shell
-# Usually fails, but not always
+# Individual binary can be linked successfully
+> ./gradlew app:linkMacosArm64
+
+# Full build of project usually fails, but not always
 > ./gradlew app:build
 
 # Force the tasks to run sequentially.
-# Does not fail with the overlapping lock exception, fails with to the next problem
+# Does not fail with the overlapping lock exception, fails with the next problem
 > ./gradlew app:build --max-workers=1
 ```
 
@@ -40,3 +45,7 @@ To see this, run:
 # App and lib in same build -> succeeds
 > ./gradlew multiproject:app:build
 ```
+
+## References to library are not resolved in IDEA
+
+When the build is imported into IDEA, the references to the library in the app are not resolved.
