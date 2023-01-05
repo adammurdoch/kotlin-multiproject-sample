@@ -30,18 +30,18 @@ To see this, run:
 
 ## Issue 2: App `compileUnixMainKotlinMetadata` fails with unresolved reference to library
 
-The app [uses a class](app/src/unixMain/kotlin/App.kt) from the library.
+The app [uses a class](app/src/unixMain/kotlin/App.kt#L2) from the library.
 When the same app and library are part of the same Gradle multi-project build, the app can be built correctly.
 However, when the app and library are in separate included builds, building the app fails with an unresolved reference.
 
 To see this, run:
 
 ```shell
-# App and lib in separate builds -> fails
-> ./gradlew app:build --max-workers=1
-
 # App and lib in same build -> succeeds
 > ./gradlew multiproject:app:build
+
+# App and lib in separate builds -> fails
+> ./gradlew app:build --max-workers=1
 ```
 
 ## Issue 3: References to library are not resolved in IDEA
